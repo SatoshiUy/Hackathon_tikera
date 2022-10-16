@@ -14,10 +14,10 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Image from 'next/image'
-import TikeraBackgroundPic from '../public/owner/tikera_background.png'
+import TikeraLogoPic from '../public/owner/tikera_logo.png'
 import zIndex from '@mui/material/styles/zIndex';
 
-import TikeraLogoPic from '../public/owner/tikera_logo.png'
+import SignIn from '../public/1.jpg'
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from '../config/firebase';
 
@@ -45,12 +45,16 @@ export default function SignInSide() {
           sm={4}
           md={7}
         >
-          <Image
-            src={TikeraBackgroundPic}
-            alt="Tikera Background"
-            style={{zIndex:'-1'}}
-            sizes={'100vh'}
-          />
+          <div style={{width: '100%', height: '100%', position: 'relative'}}>
+            <Image
+              src={SignIn}
+              alt="Tikera Background"
+              style={{zIndex:'-1'}}
+              layout='fill'
+              objectFit='cover'
+            />
+          </div>
+          
         </Grid>
         
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>

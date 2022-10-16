@@ -19,10 +19,10 @@ const Hero = () => {
           <Typography sx={{fontSize:'45px', color: '#002CB0'}}>
             Hãy cùng chúng tôi sáng tạo nên thương hiệu của bạn
           </Typography>
-          <Typography sx={{fontSize:'14px'}} >
+          <Typography sx={{fontSize:'20px'}} >
             <b>Tikera</b> sẽ giúp cho bạn lan tỏa thương hiệu của chính bản thân đến với mọi người bằng những sản phẩm mang phong cách của chính bản thân bạn
           </Typography>
-          <Typography sx={{fontSize:'14px', color: '#FFBD00'}}>
+          <Typography sx={{fontSize:'20px', color: '#FFBD00'}}>
             Còn chần chờ gì nữa!
           </Typography>
           <SearchBar />

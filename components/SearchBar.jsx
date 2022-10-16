@@ -16,7 +16,7 @@ export default function SearchBar() {
         id="combo-box-demo"
         options={categories}
         sx={{ width: 300, margin:'15px 0' }}
-        renderInput={(params) => <TextField {...params} label="Category" 
+        renderInput={(params) => <TextField variant="filled" {...params} label="Category" 
           
         />}
         onChange={(event, value) => {
