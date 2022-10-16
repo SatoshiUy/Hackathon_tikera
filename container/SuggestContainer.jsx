@@ -144,9 +144,16 @@ export default function SuggestContainer() {
                 Edit (Staging)
               </Button>
             </CardActions>
+            
           </Card>
+          <Button sx={{margin: '20px 0'}} variant='contained' onClick={
+          () => router.push({
+            pathname: '/edit'
+          })
+        }>Sản phẩm gợi ý</Button>
         </Grid>
       </Grid>
+      
       <Dialog
         open={open}
         TransitionComponent={Transition}

@@ -1,13 +1,16 @@
 import React from 'react'
 
-import {CardMedia, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup} from '@mui/material'
+import {Button, CardMedia, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup} from '@mui/material'
 import Image from 'next/image'
 import Pic111 from '../public/logo/111.jpeg'
 import Pic121 from '../public/logo/121.jpeg'
 import Pic112 from '../public/logo/112.jpeg'
 import Pic122 from '../public/logo/122.jpeg'
+import { useRouter } from 'next/router'
 
 function EditPage() {
+  const router = useRouter();
+
   const [visible, setVisible] = React.useState();
 
   const [valueA, setValueA] = React.useState('green');
@@ -27,7 +30,7 @@ function EditPage() {
       <Grid container spacing={2}
         justifyContent="center"
         alignItems="center"
-        mt={30}
+        mt={15}
       >
         <FormControl>
           <FormLabel id="demo-controlled-radio-buttons-group">Font</FormLabel>
@@ -53,7 +56,7 @@ function EditPage() {
           </RadioGroup>
         </FormControl>
 
-        <Grid item xs={4} sx={{boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px', padding: '10px'}} >
+        <Grid item xs={6} sx={{boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px', padding: '10px'}} >
           { (valueA == 'green' && valueB == 'fonta') && (
             <CardMedia  title="Your title">
               <Image src={Pic111} width={"1500px"} height={"900px"} />
@@ -75,9 +78,14 @@ function EditPage() {
           </CardMedia>
           )}
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={6}>
           
         </Grid>
+        <Button variant='contained' onClick={
+          () => router.push({
+            pathname: '/suggest/3bKkRBOIBvR1GDCBLhet'
+          })
+        }>Next</Button>
       </Grid>
     </>
   )
