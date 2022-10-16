@@ -30,7 +30,8 @@ export default function LogoRequest() {
               <Typography sx={{fontSize:'40px'}}>Enter {stepTotal[step]}</Typography>
               <Typography sx={{fontSize:'25px'}} my={5}>By telling us more about what you do, we can create better designs for you.</Typography>
               <TextField
-              variant="filled" 
+                  required
+                  variant="filled" 
                   id="outlined-textarea"
                   label={stepTotal[step]}
                   placeholder={stepTotal[step]}

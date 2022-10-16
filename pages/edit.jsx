@@ -1,63 +1,84 @@
-import MainNavigation from '../components/MainNavigation.component'
-import * as React from 'react';
-import {Button, FormControl, FormControlLabel, FormHelperText, FormLabel, Grid, Radio, RadioGroup} from '@mui/material';
+import React from 'react'
 
+import {CardMedia, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup} from '@mui/material'
 import Image from 'next/image'
-import Logo1 from '../public/logo/1.jpeg';
-import Logo2 from '../public/logo/2.jpeg';
-import Logo3 from '../public/logo/3.jpeg';
-import Logo4 from '../public/logo/4.jpeg';
-import Logo5 from '../public/logo/5.jpeg';
-import Logo6 from '../public/logo/6.jpeg';
-import { Box } from '@mui/system';
-import { useRouter } from 'next/router';
+import Pic111 from '../public/logo/111.jpeg'
+import Pic121 from '../public/logo/121.jpeg'
+import Pic112 from '../public/logo/112.jpeg'
+import Pic122 from '../public/logo/122.jpeg'
 
+function EditPage() {
+  const [visible, setVisible] = React.useState();
 
-function EditPage({request}) {
-  const router = useRouter()
+  const [valueA, setValueA] = React.useState('green');
+
+  const handleChangeA = (event) => {
+    setValueA(event.target.value);
+  };
+
+  const [valueB, setValueB] = React.useState('fonta');
+
+  const handleChangeB = (event) => {
+    setValueB(event.target.value);
+  };
+
   return (
     <>
-      <MainNavigation />
-      {/* <Image src={Logo1} width={"750px"} height={"350px"} /> */}
-    <Grid container spacing={2} mt={10}>
-        <Grid item xs={2}>
-          <Box sx={{padding: '20px',display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center', bgcolor:'white', boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px'}}>
-            <FormControl>
-            <FormLabel id="demo-radio-buttons-group-label">Font</FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-radio-buttons-group-label"
-              defaultValue="fonta"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel value="fonta" control={<Radio />} label="Font A"/>
-              <FormControlLabel value="fontb" control={<Radio />} label="Font B"/>
-            </RadioGroup>
-            <FormLabel id="color-radio">Color</FormLabel>
-            <RadioGroup
-              aria-labelledby="color-radio"
-              defaultValue="red"
-              name="radio-buttons-group"
-            >
-              <FormControlLabel value="red" control={<Radio />} label="Red"/>
-              <FormControlLabel value="brown" control={<Radio />} label="Brown" />
-              <FormControlLabel value="green" control={<Radio />} label="Green" />
-            </RadioGroup>
-            <Button
-              variant="contained"
-              
-            >
-              Export
-            </Button>
-          </FormControl>
-          </Box>
+      <Grid container spacing={2}
+        justifyContent="center"
+        alignItems="center"
+        mt={30}
+      >
+        <FormControl>
+          <FormLabel id="demo-controlled-radio-buttons-group">Font</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={valueA}
+            onChange={handleChangeA}
+          >
+            <FormControlLabel value="green" control={<Radio />} label="Font A" />
+            <FormControlLabel value="yellow" control={<Radio />} label="Font B" />
+          </RadioGroup>
+
+          <FormLabel id="demo-controlled-radio-buttons-group">Color</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-controlled-radio-buttons-group"
+            name="controlled-radio-buttons-group"
+            value={valueB}
+            onChange={handleChangeB}
+          >
+            <FormControlLabel value="fonta" control={<Radio />} label="Green" />
+            <FormControlLabel value="fontb" control={<Radio />} label="Yellow" />
+          </RadioGroup>
+        </FormControl>
+
+        <Grid item xs={4} sx={{boxShadow: 'rgba(149, 157, 165, 0.2) 0px 8px 24px', padding: '10px'}} >
+          { (valueA == 'green' && valueB == 'fonta') && (
+            <CardMedia  title="Your title">
+              <Image src={Pic111} width={"1500px"} height={"900px"} />
+          </CardMedia>
+          )}
+          { (valueA == 'green' && valueB == 'fontb') && (
+            <CardMedia  title="Your title">
+              <Image src={Pic112} width={"1500px"} height={"900px"} />
+          </CardMedia>
+          )}
+          { (valueA == 'yellow' && valueB == 'fonta') && (
+            <CardMedia  title="Your title">
+              <Image src={Pic121} width={"1500px"} height={"900px"} />
+          </CardMedia>
+          )}
+          { (valueA == 'yellow' && valueB == 'fontb') && (
+            <CardMedia  title="Your title">
+              <Image src={Pic122} width={"1500px"} height={"900px"} />
+          </CardMedia>
+          )}
         </Grid>
         <Grid item xs={8}>
-          <Image src={Logo1} width={"750px"} height={"400px"} />
+          
         </Grid>
       </Grid>
-      <Button variant='primary' onClick={() => router.push({
-        pathname: `/suggest/${request.id}`
-      })}>Next</Button>
     </>
   )
 }

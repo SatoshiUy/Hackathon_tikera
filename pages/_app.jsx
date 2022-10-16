@@ -61,6 +61,7 @@ function MyApp({ Component, pageProps }) {
 						<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet"></link>
 					</Head>
 					<Component {...pageProps} />
+					
 					<Box
 						sx={{ height:'100%', weight:'100%', position: 'fixed', top: '0', zIndex: '-1' }}
 						>

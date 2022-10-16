@@ -10,6 +10,19 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import DesignerSuggestCard from '../components/DesignerSuggestCard';
 
+import * as React from 'react'
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import QR from '../public/2.jpg'
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function SuggestContainer() {
   const [designers, setDesigners] = useState('')
   const [requirement, setRequirement] = useState('')
@@ -22,6 +35,14 @@ export default function SuggestContainer() {
   }
   console.log(designers)
   
+  const [open, setOpen] = useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   useEffect(() => {
     fetch(`https://3e6wxzs2h9.execute-api.ap-southeast-1.amazonaws.com/Prod/Designers?id=${id}`)
@@ -76,7 +97,9 @@ export default function SuggestContainer() {
                   </CardContent>
                 </CardActionArea>
                 <CardActions>
-                  <Button size="small" color="primary">
+                  <Button size="small" color="primary"
+                    onClick={handleClickOpen}
+                  >
                     Contact
                   </Button>
                 </CardActions>
@@ -124,6 +147,31 @@ export default function SuggestContainer() {
           </Card>
         </Grid>
       </Grid>
+      <Dialog
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+        <DialogTitle>{"Thanh toán"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-slide-description">
+            
+            Hãy thanh toán để liên hệ với designer với giá:
+            <Typography sx={{color: 'rgb(0, 115, 46)', fontSize: '25px'}}>
+            10.000 VND
+            </Typography>
+          </DialogContentText>
+        </DialogContent>
+        <Image src={QR} width={"500px"} height={"500px"} sx={{margin: '10px 0'}}/>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={() => router.push({
+                      pathname:'https://poc-chat-app-pi.vercel.app/'
+                    })}>Agree</Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   )
 }
